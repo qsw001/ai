@@ -1,0 +1,45 @@
+# 文件名：graph.yaml
+nodes:
+  - id: loader
+    type: Loader
+    config:
+      source_type: local_filesystem
+      params:
+        path: "./docs"       # 本地文档路径
+        file_types: [".txt"] # 支持的文件类型
+
+  - id: indexer
+    type: Indexer
+    config:
+      model: doubao-embedding-text-240715
+      vector_db: redis_vectorstore
+      redis_config:
+        host: "127.0.0.1"
+        port: 6379
+        password: ""
+
+  - id: retriever
+    type: Retriever
+    config:
+      top_k: 3
+      vector_db: redis_vectorstore
+      redis_config:
+        host: "127.0.0.1"
+        port: 6379
+        password: ""
+
+  - id: chat_model
+    type: ChatModel
+    config:
+      model: doubao-seed-1-6-250615
+
+edges:
+  - from: loader
+    to: indexer
+
+  - from: retriever
+    to: chat_model
+
+# 这里可以理解为：
+# 文档先被 loader 读取，再被 indexer 索引到向量数据库
+# 用户问题由 retriever 先检索相关知识，再传给 chat_model 生成答案
