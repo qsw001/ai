@@ -20,18 +20,7 @@ type ChatResponse struct {
 	Reply string `json:"reply"`
 }
 
-func enableCORS(w http.ResponseWriter) {
-    w.Header().Set("Access-Control-Allow-Origin", "*")
-    w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
-    w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
-}
-
 func ChatHandler(w http.ResponseWriter, r *http.Request) {
-
-	enableCORS(w)
-    if r.Method == http.MethodOptions {
-        return
-    }
 
 	var req ChatRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {

@@ -124,15 +124,18 @@ import (
 	"ai/db"
 	"ai/router"
 	"log"
-	"net/http"
+	_"net/http"
 )
 
 func main() {
 	config.LoadEnv()
 	db.InitMySQL()
 
-	router.RegisterRoutes()
+	r := router.RegisterRoutes() // 返回 *gin.Engine
 
-	log.Println(" 服务启动于 http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Println("服务启动于 http://localhost:8080")
+	err := r.Run(":8080") // 用 Gin 启动服务器
+	if err != nil {
+		log.Fatalf("启动失败: %v", err)
+	}
 }

@@ -40,3 +40,108 @@
 .read-the-docs {
   color: #888;
 }
+
+.app-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app-title {
+  text-align: center;
+  color: #333;
+}
+
+.chat-window {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 15px;
+  height: 500px;
+  overflow-y: auto;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.empty-tip {
+  color: #666;
+  text-align: center;
+  margin-top: 180px;
+}
+
+.message-row {
+  margin-bottom: 12px;
+  display: flex;
+}
+
+.message-user {
+  justify-content: flex-end;
+}
+
+.message-ai {
+  justify-content: flex-start;
+}
+
+.message-bubble {
+  max-width: 70%;
+  padding: 10px 15px;
+  border-radius: 20px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.message-user .message-bubble {
+  background-color: #0084ff;
+  color: white;
+}
+
+.message-ai .message-bubble {
+  background-color: #e5e5ea;
+  color: black;
+}
+
+.error-tip {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.input-area {
+  margin-top: 15px;
+  display: flex;
+}
+
+.message-input {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: none;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.message-input:disabled {
+  background-color: #f0f0f0;
+}
+
+.send-button {
+  margin-left: 10px;
+  padding: 0 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  background-color: #0084ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.send-button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
